@@ -1,0 +1,22 @@
+import sys
+input=sys.stdin.readline
+
+N = input()
+nl = list(map(int, input().split(' '))) #' '.join(input().split())' 4 1 5 2 3
+M = input()
+ml = list(map(int, input().split(' '))) #1 3 7 9 5
+nl.sort() #1 2 3 4 5
+
+for i in ml:
+    start = 0
+    end = len(nl)-1
+    while start<=end:
+        mid = (start+end)//2
+        if nl[mid]==i:
+            print(1)
+            break
+        elif nl[mid]>i:
+            end = mid-1
+        elif nl[mid]<i:
+            start = mid+1
+    if start>end: print(0)
